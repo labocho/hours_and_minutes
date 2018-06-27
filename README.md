@@ -34,7 +34,7 @@ HoursAndMinutes.min(12 * 60 + 34) == hm # true
 Call `require "hours_and_minutes/active_record"` to integrate ActiveRecord. It registers attribute type `:hours_and_minutes`.
 
 ```ruby
-require "hours_and_minutes/active_record
+require "hours_and_minutes/active_record"
 
 class Alarm
   # `at` is a string typed column
