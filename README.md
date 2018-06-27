@@ -1,9 +1,5 @@
 # HoursAndMinutes
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/hours_and_minutes`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -22,7 +18,33 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+
+```ruby
+require "hours_and_minutes"
+
+hm = HoursAndMinutes.new(12, 34)
+hm.to_s # "12:34"
+hm.hour # 12
+hm.min # 34
+
+HoursAndMinutes.parse("12:34") == hm # true
+HoursAndMinutes.min(12 * 60 + 34) == hm # true
+```
+
+Call `require "hours_and_minutes/active_record"` to integrate ActiveRecord. It registers attribute type `:hours_and_minutes`.
+
+```ruby
+require "hours_and_minutes/active_record
+
+class Alarm
+  # `at` is a string typed column
+  attribute :at, :hours_and_minutes
+end
+
+alarm = Alarm.create!(at: "12:34")
+alarm.reload.at == HoursAndMinutes.new(12, 34)
+```
+
 
 ## Development
 
