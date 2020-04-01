@@ -23,7 +23,7 @@ GEM
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     minitest (5.11.3)
-    rake (10.5.0)
+    rake (13.0.1)
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
       rspec-expectations (~> 3.7.0)
@@ -47,11 +47,11 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord (~> 5.0)
-  bundler (~> 1.16)
+  bundler
   hours_and_minutes!
-  rake (~> 10.0)
+  rake (>= 12.3.3)
   rspec
   sqlite3
 
 BUNDLED WITH
-   1.16.1
+   2.1.2
