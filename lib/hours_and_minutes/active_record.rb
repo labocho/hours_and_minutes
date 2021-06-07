@@ -6,6 +6,8 @@ class HoursAndMinutes
     # @param value [HoursAndMinutes, Numeric, String]
     # @return [HoursAndMinutes, nil]
     def cast(value)
+      return if value.blank?
+
       HoursAndMinutes.cast(value)
     end
 
@@ -20,7 +22,7 @@ class HoursAndMinutes
     # @param value [HoursAndMinutes, nil]
     # @return [String, nil]
     def serialize(value)
-      return if value.nil?
+      return if value.blank?
 
       value.to_s
     end
