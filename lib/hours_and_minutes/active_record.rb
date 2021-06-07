@@ -6,15 +6,15 @@ class HoursAndMinutes
     # @param value [HoursAndMinutes, Numeric, String]
     # @return [HoursAndMinutes, nil]
     def cast(value)
-      return if value.blank?
-
       HoursAndMinutes.cast(value)
+    rescue ParseError
+      nil
     end
 
     # @param value [String, nil]
     # @return [HoursAndMinutes, nil]
     def deserialize(value)
-      return if value.blank?
+      return if value.nil?
 
       HoursAndMinutes.parse(value)
     end
@@ -22,7 +22,7 @@ class HoursAndMinutes
     # @param value [HoursAndMinutes, nil]
     # @return [String, nil]
     def serialize(value)
-      return if value.blank?
+      return if value.nil?
 
       value.to_s
     end
