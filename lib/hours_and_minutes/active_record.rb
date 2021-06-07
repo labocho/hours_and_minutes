@@ -12,7 +12,7 @@ class HoursAndMinutes
     # @param value [String, nil]
     # @return [HoursAndMinutes, nil]
     def deserialize(value)
-      return if value.nil?
+      return if value.blank?
       HoursAndMinutes.parse(value)
     end
 
