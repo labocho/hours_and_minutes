@@ -4,6 +4,9 @@ AllCops:
     - node_modules/**/*
   NewCops: enable
 
+Gemspec/RequiredRubyVersion:
+  Enabled: false
+
 Layout/CaseIndentation:
   EnforcedStyle: end
 
