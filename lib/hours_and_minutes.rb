@@ -11,12 +11,10 @@ class HoursAndMinutes
   # @return [HoursAndMinutes]
   def self.parse(s)
     s = s.to_s.gsub(/[^\d:]/, "")
-    if s =~ /\A(\d+):(\d{1,2})\z/
-      h, m = $~.captures
-      min(h.to_i * 60 + m.to_i)
-    else
-      raise ParseError, "Cannot parse #{s.inspect}"
-    end
+    raise ParseError, "Cannot parse #{s.inspect}" unless s =~ /\A(\d+):(\d{1,2})\z/
+
+    h, m = $~.captures
+    min(h.to_i * 60 + m.to_i)
   end
 
   # @param i [Integer]
@@ -42,13 +40,15 @@ class HoursAndMinutes
   # @param min [Integer]
   def initialize(hour, min)
     raise ArgumentError, "Cannot support negative value" if hour.negative? || min.negative?
+
     i = hour.to_i * 60 + min.to_i
-    @hour, @min = i / 60, i % 60
+    @hour = i / 60
+    @min = i % 60
   end
 
   # @return [String]
   def to_s
-    sprintf("%02d:%02d", hour, min)
+    format("%02d:%02d", hour, min)
   end
 
   alias_method :inspect, :to_s
@@ -65,6 +65,7 @@ class HoursAndMinutes
     if other.nil?
       raise ArgumentError, "Cannot add to HoursAndMinutes: #{other.inspect}"
     end
+
     self.class.min(to_i + other.to_i)
   end
 
@@ -72,6 +73,7 @@ class HoursAndMinutes
   # @return [Boolean]
   def ==(other)
     return false if other.nil?
+
     (self <=> other) == 0
   end
 
@@ -79,6 +81,7 @@ class HoursAndMinutes
   # @return [Integer]
   def <=>(other)
     raise ArgumentError, "Cannot compare #{inspect} to #{other.inspect}" unless other.is_a?(self.class)
+
     to_i <=> other.to_i
   end
 end

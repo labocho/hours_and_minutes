@@ -13,6 +13,7 @@ class HoursAndMinutes
     # @return [HoursAndMinutes, nil]
     def deserialize(value)
       return if value.blank?
+
       HoursAndMinutes.parse(value)
     end
 
@@ -20,6 +21,7 @@ class HoursAndMinutes
     # @return [String, nil]
     def serialize(value)
       return if value.nil?
+
       value.to_s
     end
   end
